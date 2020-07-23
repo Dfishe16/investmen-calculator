@@ -30,15 +30,15 @@ class Display extends Component {
     if (5000 < amount && amount < 10000) {
       this.setState({ APR: 0.1 });
     }
-    if (10000 < amount && amount < 15000) {
+    if (10000 < amount && amount < 50000) {
       this.setState({ APR: 0.15 });
     }
-    if (15000 < amount && amount < 20000) {
+    if (50000 < amount && amount < 100000) {
       this.setState({ APR: 0.2 });
     }
   };
 
-  calculateMonthlyRepayment = () => {
+  calculateInvestmentValue = () => {
     const { amount, years } = this.props;
 
  
@@ -47,9 +47,9 @@ class Display extends Component {
     const totalInvested = decimalFormat * amount;
 
 
-    var compoundInterest = finance.CI(decimalFormat, 6, totalInvested, years );
+    var compoundInterest = finance.CI(decimalFormat, 6, totalInvested, years);
 
-    return <p>${Math.round(compoundInterest)}</p>;
+    return <p>${(compoundInterest)}</p>;
   };
 
   percentageAPR = () => {
@@ -61,7 +61,7 @@ class Display extends Component {
       <div className="flex">
         <DisplayChild func={this.percentageAPR()} text="interest rate" />
         <DisplayChild
-          func={this.calculateMonthlyRepayment()}
+          func={this.calculateInvestmentValue()}
           text="Investment Value"
         />
       </div>

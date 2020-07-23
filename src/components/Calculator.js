@@ -26,7 +26,7 @@ class Calculator extends Component {
         <h4>I want to invest ${amountValue}</h4>
         <InputRange
           step={100}
-          maxValue={20000}
+          maxValue={100000}
           minValue={1000}
           value={amountValue}
           onChange={this.handleAmountChange}
